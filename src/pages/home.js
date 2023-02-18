@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PropertyCard from '../components/propertyCard';
 import Banner from '../components/banner';
+import Spinner from '../components/loader/Spinner';
 
 const Home = () => {
     const baseUrl = 'https://bayut.p.rapidapi.com';
@@ -68,9 +69,9 @@ const Home = () => {
                         </div>
                         {
                             purchase.forSale ? <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4'>
-                                {propForSale.length > 0 && propForSale.map((property) => <PropertyCard property={property} key={property.id} />)}
+                                {propForSale.length > 0 ? propForSale.map((property) => <PropertyCard property={property} key={property.id} /> ) : <Spinner />}
                             </div> : <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4'>
-                                {propForRent.length > 0 && propForRent.map((property) => <PropertyCard property={property} key={property.id} />)}
+                                {propForRent.length > 0 ? propForRent.map((property) => <PropertyCard property={property} key={property.id} />) : <Spinner />}
                             </div>
                         }
                     </div>
