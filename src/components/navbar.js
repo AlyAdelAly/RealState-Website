@@ -22,7 +22,7 @@ let Links = [
     }
 ];
 
-export default function Example() {
+const NavBar = () => {
     const [openNav, setOpenNav] = useState(false);
 
     useEffect(() => {
@@ -81,3 +81,5 @@ export default function Example() {
         </Navbar>
     );
 }
+
+export default NavBar;
