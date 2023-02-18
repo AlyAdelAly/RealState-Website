@@ -45,7 +45,7 @@ const PropertyDetails = () => {
         photos
     } = properties;
     return (
-        <div className='max-w-[1000px] m-auto p-4 pt-24'>
+        <div className='max-w-[1000px] m-auto p-4 '>
             {photos ? <PhotoScrollbar data={photos} /> : <Spinner />}
             <div className='w-full p-6'>
                 <div className='pt-2 items-center justify-between'>
