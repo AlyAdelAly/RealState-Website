@@ -1,6 +1,22 @@
 import React from 'react';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper";
+
+import "swiper/css";
 
 const About = () => {
+    const aboutImages = [
+        {
+            img: "https://images.unsplash.com/photo-1568992688065-536aad8a12f6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80",
+            title_1: "Who We ",
+            title_2: "Are?",
+        },
+        {
+            img: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80",
+            title_1: "What We ",
+            title_2: "Do?",
+        }
+    ]
     const paragraphStory = [
         {
             paragraph: `What started out as a collective dream and an innovative idea has now become a reality.
@@ -19,24 +35,49 @@ const About = () => {
         }
     ];
     return (
-        <div className='pt-14'>
-            <div className='max-w-[1640px] mx-auto p-4 pb-2 lg:pb-15 md:pb-14'>
-                <div className=''>
+        <div className='pt-2'>
+            {/* <div className='max-w-[1640px] mx-auto p-4 pb-2 lg:pb-15 md:pb-14'>
+                <div>
                     <div className=' flex flex-col justify-center items-center pb-6'>
                         <h1 className='px-4 text-2xl sm:text-xl md:text-3xl lg:text-5xl font-bold'>About <span className='text-slate-600'>Us</span></h1>
                         <h1 className='px-4 text-2xl sm:text-xl md:text-3xl lg:text-5xl font-bold'> <span className='text-slate-600'>Who We</span> Are?</h1>
                     </div>
                     <img className='rounded-lg w-full' src='https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80' alt="/" />
                 </div>
-            </div>
-            <div className='relative text-3xl text-slate-800 font-bold justify-start items-start pl-4 pb-4'>
+            </div> */}
+            <Swiper spaceBetween={30}
+                centeredSlides={true}
+                autoplay={{
+                    delay: 4000,
+                    disableOnInteraction: false,
+                }}
+                modules={[Autoplay]}
+                className="mySwiper"
+            >
+                {
+                    aboutImages.map((image, index) => (
+                        <SwiperSlide key={index}>
+                            <div className='max-w-[1640px] mx-auto p-4'>
+                                <div className='max-h-[550px] relative'>
+                                    <div className='absolute w-full h-full text-gray-200 max-h-[550px] bg-black/40 flex flex-col justify-center rounded-xl'>
+                                        <h1 className='px-4 text-4xl md:text-6xl lg:text-7xl font-bold'>About <span className='text-slate-600'>Us</span></h1>
+                                        <h1 className='px-4 text-4xl md:text-6xl lg:text-7xl font-bold'> <span className='text-slate-600'>{image.title_1}</span>{image.title_2}</h1>
+                                    </div>
+                                    <img className='w-full max-h-[550px] object-cover rounded-xl' src={image.img} alt="/" />
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    ))
+                }
+            </Swiper>
+            <div className='flex text-3xl text-slate-800 font-bold justify-start items-start pl-4 pb-4'>
                 Our Company Story
             </div>
             <ol>
                 {
-                    paragraphStory.map((p,index) => (
+                    paragraphStory.map((p, index) => (
                         <li key={index} className='text-zinc-600 text-lg pl-4 pb-6'>
-                             {p.paragraph}
+                            {p.paragraph}
                         </li>
                     ))
                 }
