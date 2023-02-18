@@ -20,7 +20,7 @@ const About = () => {
     const paragraphStory = [
         {
             paragraph: `What started out as a collective dream and an innovative idea has now become a reality.
-            Finding the right home has always been a stressful process, that’s where ${<span className='text-slate-800 font-bold'> RealState </span>} comes in.
+            Finding the right home has always been a stressful process, that’s where RealState  comes in.
             We have helped more than 50,000 families easily find the most suitable property to turn into a loving home.`
         },
         {
