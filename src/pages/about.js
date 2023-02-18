@@ -36,19 +36,10 @@ const About = () => {
     ];
     return (
         <div className='pt-2'>
-            {/* <div className='max-w-[1640px] mx-auto p-4 pb-2 lg:pb-15 md:pb-14'>
-                <div>
-                    <div className=' flex flex-col justify-center items-center pb-6'>
-                        <h1 className='px-4 text-2xl sm:text-xl md:text-3xl lg:text-5xl font-bold'>About <span className='text-slate-600'>Us</span></h1>
-                        <h1 className='px-4 text-2xl sm:text-xl md:text-3xl lg:text-5xl font-bold'> <span className='text-slate-600'>Who We</span> Are?</h1>
-                    </div>
-                    <img className='rounded-lg w-full' src='https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80' alt="/" />
-                </div>
-            </div> */}
             <Swiper spaceBetween={30}
                 centeredSlides={true}
                 autoplay={{
-                    delay: 4000,
+                    delay: 3000,
                     disableOnInteraction: false,
                 }}
                 modules={[Autoplay]}
