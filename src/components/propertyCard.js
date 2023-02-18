@@ -8,7 +8,7 @@ import millify from 'millify';
 const PropertyCard = ({ property }) => {
     return (
         <Link to={`${property.externalID}`}>
-            <div className='flex flex-wrap w-[420px] p-5 pt-10 justify-start cursor-pointer '>
+            <div className='flex flex-wrap w-[420px] p-5 pt-10 justify-start cursor-pointer hover:scale-105 duration-300'>
                 <div>
                     <img src={property.coverPhoto.url} alt='home' className='w-[400px] h-[250px] rounded-md' />
                 </div>
