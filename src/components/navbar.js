@@ -1,52 +1,83 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from "react";
+import {
+    Navbar,
+    MobileNav,
+    Typography,
+    IconButton,
+} from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
-import { Link } from 'react-router-dom';
+let Links = [
+    {
+        name: 'Home',
+        path: '/'
+    },
+    {
+        name: 'About',
+        path: '/about'
+    },
+    {
+        name: 'Contact',
+        path: '/contact'
+    }
+];
 
-const Navbar = () => {
-    let Links = [
-        {
-            name: 'Home',
-            path: '/'
-        },
-        {
-            name: 'About',
-            path: '/about'
-        },
-        {
-            name: 'Contact',
-            path: '/contact'
-        }
-    ];
+export default function Example() {
+    const [openNav, setOpenNav] = useState(false);
 
-    const [open, setOpen] = useState(false);
+    useEffect(() => {
+        window.addEventListener(
+            "resize",
+            () => window.innerWidth >= 960 && setOpenNav(false)
+        );
+    }, []);
+
+    const navList = (
+        <ul className="md:flex mr-20 mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+            {
+                Links.map((link) => (
+                    <Typography
+                        key={link.name} 
+                        className="p-1 font-medium text-md"
+                    >
+                        <Link to={link.path} className="flex items-center">
+                            {link.name}
+                        </Link>
+                    </Typography>
+                ))
+            }
+        </ul>
+    );
 
     return (
-        <div className='shadow-md fixed w-full top-0 left-0'>
-            <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
-                <div className='font-bold text-2xl cursor-pointer flex items-center font-sans text-slate-500'>
+        <Navbar className="mx-auto w-full py-2 px-4 lg:px-8 lg:py-4 text-slate-700 rounded-none">
+            <div className=" mx-auto flex items-center justify-between">
+                <Typography
+                    as="a"
+                    href="#"
+                    variant="small"
+                    className="font-bold text-2xl cursor-pointer flex items-center font-sans text-slate-500"
+                >
                     <span className='text-2xl text-gray-800'>
                         Real
                     </span>
                     Estate
-                </div>
-
-                <div onClick={() => setOpen(!open)} className='text-3xl absolute right-8 top-5 cursor-pointer md:hidden'>
-                    <ion-icon name={open ? 'close' : 'menu'}></ion-icon>
-                </div>
-
-                <ul className={`md:flex md:items-center md:pb-0 pb-8 absolute md:static bg-white left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in-out ${open ? 'top-16 ' : 'top-[-490px]'}`}>
-                    {
-                        Links.map((link) => (
-                            <li key={link.name} className='md:ml-8 text-xl md:my-0 my-7'>
-                                <Link to={link.path} className='text-gray-800 hover:text-gray-400 duration-500'>{link.name}</Link>
-                            </li>
-                        ))
-                    }
-                </ul>
+                </Typography>
+                <div className="hidden lg:block">{navList}</div>
+                <IconButton
+                    variant="text"
+                    className="pb-7 ml-auto h-6 w-6 text-justify hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+                    ripple={false}
+                    onClick={() => setOpenNav(!openNav)}
+                >
+                    <ion-icon name={openNav ? 'close' : 'menu'} size="large"></ion-icon>
+                </IconButton>
             </div>
-        </div>
-
+            <MobileNav open={openNav}>
+                <div className="container mx-auto">
+                    {navList}
+                </div>
+            </MobileNav>
+        </Navbar>
     );
-};
-
-export default Navbar;
+}
