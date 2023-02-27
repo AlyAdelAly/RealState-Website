@@ -7,28 +7,32 @@ import millify from 'millify';
 
 const PropertyCard = ({ property }) => {
     return (
-        <Link to={`${property.externalID}`}>
-            <div className='flex flex-wrap w-[420px] p-5 pt-10 justify-start cursor-pointer hover:scale-105 duration-300'>
-                <div>
-                    <img src={property.coverPhoto.url} alt='home' className='w-[400px] h-[250px] rounded-md' />
-                </div>
-                <div className='w-full'>
-                    <div className='pt-2 items-center justify-between'>
+
+        <div className='shadow-lg rounded-md w-[350px] bg-slate-50'>
+            <img
+                src={property.coverPhoto.url} alt='property'
+                className='w-full h-[200px] object-cover rounded-t-lg hover:scale-105 duration-200 cursor-pointer'
+            />
+            <div className='w-full p-2'>
+                <div className='pt-2 items-center justify-between'>
                     <div className='flex items-center flex-wrap'>
                         <div className='text-stone-600 pr-2'>{property.isVerified && <GoVerified />}</div>
                         <div className='font-bold text-lg'>EGP {millify(property.price)}{property.rentFrequency && `/${property.rentFrequency}`}</div>
+                        <button className="bg-zinc-600 hover:bg-zinc-800 text-white text-sm font-bold py-2 px-2 rounded-md ml-auto">
+                            <Link to={`${property.externalID}`}>More Info</Link>
+                        </button>
                     </div>
-                    </div>
+
                     <div className='flex items-center p-1 justify-between w-60 text-gray-800'>
                         {property.rooms}
-                        <FaBed /> | {property.baths} <FaBath /> | {millify(property.area)} sqft <BsGridFill />
-                    </div>
+                        <FaBed /> | {property.baths} <FaBath /> | {millify(property.area)} sqft <BsGridFill /> </div>
                     <div className='text-lg text-neutral-900'>
-                        {property.title.length > 35 ? property.title.substring(0, 35) + '....' : property.title}
+                        {property.title.length > 30 ? property.title.substring(0, 30) + '....' : property.title}
                     </div>
                 </div>
             </div>
-        </Link>
+
+        </div>
     );
 };
 
