@@ -54,7 +54,7 @@ const NavBar = () => {
             <div className=" mx-auto flex items-center justify-between">
                 <Typography
                     as="a"
-                    href="#"
+                    href="/"
                     variant="small"
                     className="font-bold text-2xl cursor-pointer flex items-center font-sans text-slate-500"
                 >
