@@ -37,7 +37,7 @@ const RightArrow = () => {
 
 const PhotoScrollbar = ({ data }) => {
     return (
-        <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow} style={{ overflow: 'hidden' }} >
+        <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow} className='overflow-hidden' >
             {data.map((item) => (
                 <div className='w-[320px] md:w-[400px] lg:w-[940px] overflow-hidden p-1' key={item.id} itemID={item.id} >
                     <img src={item.url} className='w-[320px] lg:w-[940px] rounded-lg md:w-[400px] relative' alt='/' />
