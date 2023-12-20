@@ -13,14 +13,14 @@ const Home = () => {
     const getHousesData = async () => {
         const dataforSale = await axios.get((`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=9`), {
             headers: {
-                'X-RapidAPI-Key': '779434cc73mshd5c96aa21289f34p1b8a84jsn9eeead9a30fe',
+                'X-RapidAPI-Key': 'adf6704d12msh1a76f6c6c3c1626p13d887jsnba42f9fde2c5',
                 'X-RapidAPI-Host': 'bayut.p.rapidapi.com'
             }
         }).then(res => res.data);
 
         const dataForRent = await axios.get((`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=9`), {
             headers: {
-                'X-RapidAPI-Key': '779434cc73mshd5c96aa21289f34p1b8a84jsn9eeead9a30fe',
+                'X-RapidAPI-Key': 'adf6704d12msh1a76f6c6c3c1626p13d887jsnba42f9fde2c5',
                 'X-RapidAPI-Host': 'bayut.p.rapidapi.com'
             }
         }).then(res => res.data);
